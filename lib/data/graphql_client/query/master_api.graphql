@@ -1,0 +1,30 @@
+query FetchAllMasters {
+  master_list {
+    id
+    masterName
+    masterNameKana
+    masterTypeId
+    __typename
+  }
+  __typename
+}
+
+query FetchMasterTypes {
+  master_type_list {
+    id
+    label
+    __typename
+  }
+  __typename
+}
+
+query SearchMasters($query: String!, $masterTypeIds: [String!]!) {
+  search(query: $query, masterTypeIds: $masterTypeIds) {
+    id
+    masterName
+    masterNameKana
+    masterTypeId
+    __typename
+  }
+  __typename
+}

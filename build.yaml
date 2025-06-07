@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          schema: lib/data/graphql_client/query/master_api_schema.graphql
+          documents: lib/data/graphql_client/query/master_api.graphql
+          output: lib/data/graphql_client/query/master_api.graphql.dart
+          naming_scheme: pathedWithFields

@@ -1,0 +1,64 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # General rules for better code quality and maintainability
+    - always_declare_return_types               # Enforces explicit return type declarations for functions
+    - always_require_non_null_named_parameters  # Requires @required for named parameters that are non-nullable
+    - avoid_empty_else                          # Avoids empty else statements
+    - avoid_print                               # Suggests using logging instead of print statements
+    - avoid_relative_lib_imports                # Enforces absolute imports for lib/ directory
+    - avoid_returning_null_for_future           # Prevents returning null from async functions
+    - avoid_slow_async_io                       # Warns about synchronous I/O operations in async functions
+    - avoid_types_as_parameter_names            # Prevents using type names as parameter names
+    - avoid_unused_constructor_parameters       # Flags unused constructor parameters
+    - cancel_subscriptions                      # Ensures Stream subscriptions are properly cancelled
+    - directives_ordering                       # Enforces consistent ordering of directives
+    - empty_catches                             # Warns about empty catch blocks
+    - empty_constructor_bodies                  # Suggests using semicolon for empty constructors
+    - library_names                             # Enforces consistent library naming conventions
+    - library_prefixes                          # Enforces consistent library prefix naming
+    - no_duplicate_case_values                  # Prevents duplicate case values in switch statements
+    - null_check_on_nullable_type_parameter     # Ensures proper null checking for nullable type parameters
+    
+    # Code style and formatting rules
+    - prefer_const_constructors                 # Suggests using const for constructor calls when possible
+    - prefer_const_declarations                 # Suggests using const for variable declarations when possible
+    - prefer_final_fields                       # Suggests using final for class fields when possible
+    - prefer_final_locals                       # Suggests using final for local variables when possible
+    - prefer_is_empty                           # Suggests using isEmpty instead of length checks
+    - prefer_is_not_empty                       # Suggests using isNotEmpty instead of length checks
+    - prefer_typing_uninitialized_variables     # Enforces type annotations for uninitialized variables
+    
+    # Documentation and readability rules
+    - recursive_getters                         # Prevents recursive getter definitions
+    - slash_for_doc_comments                    # Enforces /// for documentation comments
+    - type_init_formals                         # Suggests simpler syntax for constructor parameters
+    
+    # Performance and optimization rules
+    - unnecessary_brace_in_string_interps       # Removes unnecessary braces in string interpolation
+    - unnecessary_null_in_if_null_operators     # Removes redundant null checks in ?? operators
+    - unnecessary_this                          # Removes unnecessary this keywords
+    - unrelated_type_equality_checks            # Warns about equality comparisons between unrelated types
+    - use_rethrow_when_possible                 # Suggests using rethrow instead of throw
+    - valid_regexps                             # Ensures valid regular expression patterns
+
+analyzer:
+  errors:
+    # Critical errors that should be fixed
+    missing_required_param: error               # Missing required parameters in function calls
+    missing_return: error                       # Missing return statements in functions
+    invalid_override: error                     # Invalid method overrides
+    dead_code: error                            # Unreachable code
+    
+    # Code quality errors
+    unused_element: error                       # Unused classes, methods, or variables
+    unused_import: error                        # Unused imports
+    unused_local_variable: error                # Unused local variables
+    unused_field: error                         # Unused class fields
+    
+    # Style enforcement errors
+    prefer_const_constructors: error            # Enforce const constructor usage
+    prefer_const_declarations: error            # Enforce const declaration usage
+    prefer_final_fields: error                  # Enforce final field usage
+    prefer_final_locals: error                  # Enforce final local variable usage

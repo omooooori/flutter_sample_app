@@ -1,0 +1,60 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+
+package "Presentation Layer" {
+  [RegisterScreen] as RS
+  [MasterSelectionModal] as MSM
+  [MasterSearchField] as MSF
+  [MasterTypeChips] as MTC
+  [RecentMastersList] as RML
+  [MasterSearchResultList] as MSRL
+}
+
+package "Domain Layer" {
+  [Master] as M
+  [MasterType] as MT
+}
+
+package "Data Layer" {
+  package "Repository" {
+    [MasterListRepository] as MLR
+    [MasterSearchRepository] as MSR
+    [MasterTypeRepository] as MTR
+  }
+
+  package "Database" {
+    [AppDatabase] as DB
+    [MasterDao] as DAO
+    [MasterTable] as MTBL
+    [MasterHistoryTable] as MHTBL
+  }
+
+  package "GraphQL" {
+    [GraphQLClient] as GQL
+  }
+}
+
+' 依存関係
+RS --> MSM
+MSM --> MSF
+MSM --> MTC
+MSM --> RML
+MSM --> MSRL
+
+MSF --> MSR
+MTC --> MTR
+RML --> MSR
+MSRL --> MSR
+
+MSR --> DB
+MSR --> GQL
+MLR --> DB
+MLR --> GQL
+MTR --> GQL
+
+DB --> DAO
+DAO --> MTBL
+DAO --> MHTBL
+
+@enduml 

@@ -1,0 +1,100 @@
+@startuml
+!theme plain
+skinparam sequenceMessageAlign center
+skinparam sequenceParticipant underline
+
+actor User
+participant "RegisterScreen" as RS
+participant "RegisterScreenViewModel" as RSVM
+participant "MasterSelectionModal" as MSM
+participant "MasterSelectionViewModel" as MSVM
+participant "MasterSearchRepository" as MSR
+participant "MasterListRepository" as MLR
+participant "MasterTypeRepository" as MTR
+participant "AppDatabase" as DB
+
+== 初期化 ==
+User -> RS: 画面表示
+activate RS
+RS -> RSVM: init()
+activate RSVM
+RSVM -> MTR: fetchAvailableMasterTypes()
+activate MTR
+MTR --> RSVM: List<MasterType>
+deactivate MTR
+RSVM -> MLR: fetchAllMasters()
+activate MLR
+MLR --> RSVM: List<Master>
+deactivate MLR
+RSVM --> RS: 初期化完了
+deactivate RSVM
+deactivate RS
+
+== マスター選択モーダル表示 ==
+User -> RS: マスター選択ボタンタップ
+activate RS
+RS -> MSM: 表示
+activate MSM
+MSM -> MSVM: 初期化
+activate MSVM
+MSVM -> MSR: getRecentMasters()
+activate MSR
+MSR --> MSVM: List<Master>
+deactivate MSR
+MSVM --> MSM: 初期化完了
+deactivate MSVM
+deactivate RS
+
+== マスター検索 ==
+User -> MSM: 検索テキスト入力
+activate MSM
+MSM -> MSVM: setQuery()
+activate MSVM
+MSVM -> MSR: search()
+activate MSR
+MSR -> DB: searchMasters()
+activate DB
+DB --> MSR: List<Master>
+deactivate DB
+MSR --> MSVM: List<Master>
+deactivate MSR
+MSVM --> MSM: 検索結果更新
+deactivate MSVM
+deactivate MSM
+
+== マスター選択 ==
+User -> MSM: マスター選択
+activate MSM
+MSM -> MSVM: addToRecentMasters()
+activate MSVM
+MSVM -> MSR: addToHistory()
+activate MSR
+MSR -> DB: addToHistory()
+activate DB
+DB --> MSR: 完了
+deactivate DB
+MSR --> MSVM: 完了
+deactivate MSR
+MSVM --> MSM: 完了
+deactivate MSVM
+MSM --> RS: 選択完了
+deactivate MSM
+
+== マスター登録 ==
+User -> RS: 登録ボタンタップ
+activate RS
+RS -> RSVM: 登録処理
+activate RSVM
+RSVM -> MLR: saveMasters()
+activate MLR
+MLR -> DB: insertAll()
+activate DB
+DB --> MLR: 完了
+deactivate DB
+MLR --> RSVM: 完了
+deactivate MLR
+RSVM --> RS: 登録完了
+deactivate RSVM
+deactivate RS
+
+@enduml 

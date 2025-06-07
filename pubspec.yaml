@@ -1,0 +1,81 @@
+name: flutter_sample_app
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.4.9
+
+  # GraphQL
+  graphql_flutter: ^5.1.2
+  gql: ^1.0.0
+
+  # JSON / Immutable
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # Database
+  drift: ^2.15.0
+  sqlite3_flutter_libs: ^0.5.15
+  path: ^1.8.3
+
+  # その他便利ライブラリ
+  kana_kit: ^2.0.0
+  collection: ^1.19.1
+  shared_preferences: ^2.2.3
+  logging: ^1.2.0
+  path_provider: ^2.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Lint
+  flutter_lints: ^3.0.1
+
+  # Build & Codegen
+  build_runner: ^2.4.8
+  freezed: ^2.4.6
+  json_serializable: ^6.7.1
+  graphql_codegen: ^1.2.3
+  drift_dev: ^2.13.0
+
+  # アイコン生成
+  flutter_launcher_icons: ^0.14.3
+
+  # Mocking
+  mocktail: ^1.0.1
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+
+flutter_icons:
+  ios: true
+  image_path: "assets/app_icon.png"
+  remove_alpha_ios: true
+  android: true
+  adaptive_icon_background: "#e8e8e7"
+  adaptive_icon_foreground: "assets/app_icon_android_foreground.png"

@@ -1,0 +1,31 @@
+schema {
+    query: Query
+}
+
+type Query {
+    master_list: [Master!]!
+    master_type_list: [MasterType!]!
+    search(query: String!, masterTypeIds: [String!]!): [Master!]!
+}
+
+type Master {
+    id: ID!
+    masterName: String!
+    masterNameKana: String!
+    masterTypeId: String!
+    __typename: String!
+}
+
+type MasterType {
+    id: ID!
+    label: String!
+    __typename: String!
+}
+
+type SearchResult {
+    id: Int!
+    masterName: String!
+    masterNameKana: String!
+    masterTypeId: String!
+    __typename: String!
+}
