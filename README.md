@@ -1,4 +1,4 @@
-# coding-test-omooooori-20250425
+# Flutter sample app
 
 ## 📋 プロジェクト概要 / Project Overview
 
